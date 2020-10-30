@@ -1,0 +1,23 @@
+body #showData {
+  width: 100%;
+  height: 100%; }
+  body #showData #array {
+    position: relative;
+    display: block;
+    width: 35%;
+    height: 60vh;
+    background-color: blue; }
+    body #showData #array .row {
+      width: max-content;
+      height: max-content; }
+      body #showData #array .row ul {
+        position: relative;
+        width: 100%;
+        margin: 0; }
+        body #showData #array .row ul li {
+          list-style: none; }
+          body #showData #array .row ul li img {
+            width: 80px;
+            height: 80px; }
+
+/*# sourceMappingURL=game.css.map */
