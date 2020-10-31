@@ -1,15 +1,15 @@
 <?php
     session_start();
     $_SESSION["array"] = [
-        [0, 0, 0, 0, 0, 0, 0],
-        [0, 0, 0, 0, 0, 0, 0],
-        [0, 0, 0, 0, 0, 0, 0],
-        [0, 0, 0, 0, 0, 0, 0],
-        [0, 0, 0, 0, 0, 0, 0],
-        [0, 0, 0, 0, 0, 0, 0],
+        "row1"=>[0, 0, 0, 0, 0, 0, 0],
+        "row2"=>[0, 0, 0, 0, 0, 0, 0],
+        "row3"=>[0, 0, 0, 0, 0, 0, 0],
+        "row4"=>[0, 0, 0, 0, 0, 0, 0],
+        "row5"=>[0, 0, 0, 0, 0, 0, 0],
+        "row6"=>[0, 0, 0, 0, 0, 0, 0]
     ];
-    $_SESSION["player"];
-include("template/header.html");
+    $_SESSION["player"] = NULL;
+    include("template/header.html");
 ?>
     <header>
         <h1 class="text-capitalize text-center">puissance 4</h1>
