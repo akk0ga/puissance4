@@ -8,6 +8,7 @@
         "row5"=>[0, 0, 0, 0, 0, 0, 0],
         "row6"=>[0, 0, 0, 0, 0, 0, 0]
     ];
+    var_dump($_SESSION["array"]);
     $_SESSION["player"] = NULL;
     include("template/header.html");
 ?>
