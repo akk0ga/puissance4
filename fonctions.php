@@ -40,7 +40,7 @@ function generateSection(int $row, int $column, string $method, string $action, 
                 $array .= "<div class=\"row\">\n";
                 $array .= "<ul class=\"d-flex flex-row justify-content-center align-items-center\">\n";
                 for ($j=0; $j < $column; $j++) { 
-                    $array .= "<li><img src=\"assets/img/circle_white-01.svg\" alt=\"circle white\"></li>\n";
+                    $array .= "<li><img src=\"".displayImage()."\" alt=\"cireturn\"></li>\n";
                 }
                 $array .= "</ul>\n";
                 $array .= "</div>\n";
@@ -76,5 +76,15 @@ function setValue(int $case, int $player){
                 $_SESSION["array"][$key] = 2;
             }
         }
+    }
+}
+
+function displayImage(int $player = NULL){
+    if ($player === 1) {
+        return "assets/img/circle_red-01.svg";
+    }elseif($player === 2){
+        return "assets/img/circle_yellow-01.svg";
+    }else{
+        return "assets/img/circle_white-01.svg";
     }
 }
