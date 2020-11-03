@@ -39,8 +39,8 @@ function generateSection(int $row, int $column, string $method, string $action, 
             for ($i=1; $i <= $row ; $i++) { 
                 $array .= "<div class=\"row\">\n";
                 $array .= "<ul class=\"d-flex flex-row justify-content-center align-items-center\">\n";
-                for ($j=0; $j < $column; $j++) { 
-                    $array .= "<li><img src=\"".displayImage()."\" alt=\"cireturn\"></li>\n";
+                for ($j=0; $j < $column; $j++) {
+                    $array .= "<li><img src=\"".displayImage($i, $j)."\" alt=\"cireturn\"></li>\n";
                 }
                 $array .= "</ul>\n";
                 $array .= "</div>\n";
@@ -67,7 +67,7 @@ function generateSection(int $row, int $column, string $method, string $action, 
     echo $array;
 }
 
-function setValue(int $case, int $player){
+function setArrayValue(int $case, int $player){
     foreach ($_SESSION["array"] as $key => $value) {
         if ($key === $case) {
             if ($player === 1) {
@@ -79,12 +79,17 @@ function setValue(int $case, int $player){
     }
 }
 
-function displayImage(int $player = NULL){
-    if ($player === 1) {
-        return "assets/img/circle_red-01.svg";
-    }elseif($player === 2){
-        return "assets/img/circle_yellow-01.svg";
-    }else{
-        return "assets/img/circle_white-01.svg";
+function displayImage(int $nbr1, int $nbr2){
+    $nbrFinal = intval($nbr1."".$nbr2);
+    foreach ($_SESSION["array"] as $key => $value) {
+        if($key === $nbrFinal){
+            if ($value === 1) {
+                return "assets/img/circle_red-01.svg";
+            }elseif ($value === 2){
+                return "assets/img/circle_yellow-01.svg";
+            }else{
+                return "assets/img/circle_white-01.svg";
+            }
+        }
     }
 }

@@ -2,7 +2,7 @@
 session_start();
 include ("fonctions.php");
 if(isset($_POST["submit"]) && isset($_POST["case"])){
-    setValue($_POST["case"], 2);
+    setArrayValue($_POST["case"], 1);
 }
 var_dump($_SESSION["array"]);
 
