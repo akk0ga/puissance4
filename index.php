@@ -12,7 +12,7 @@ include("fonctions.php");
         "50"=>0, "51"=>0, "52"=>0, "53"=>0, "54"=>0, "55"=>0, "56"=>0,
         "60"=>0, "61"=>0, "62"=>0, "63"=>0, "64"=>0, "65"=>0, "66"=>0,
     ];
-    $_SESSION["player"] = NULL;
+    $_SESSION["player"] = 1;
     generateHead("", "fr", "UTF-8", "puissance 4");
     generateHeader("puissance 4");
 ?>

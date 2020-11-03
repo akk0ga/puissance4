@@ -17,10 +17,19 @@ function generateHead(string $page, string $language, string $charset, string $t
     echo $head;
 }
 
-function generateHeader(string $title){
+function generateHeader(string $title, int $player = NULL){
     $header ="";
     $header.="<header>\n";
     $header.="<h1 class=\"text-capitalize text-center\">$title</h1>\n";
+    if (!empty($player)) {
+        $header.="<h2 class=\"text-center text-secondary\"> A vous de jouer : ";
+        if ($player === 1) {
+            $header.="Joueur 1";
+        }else {
+            $header.="Joueur 2";
+        }
+        $header.="</h2>\n";
+    }
     $header.="</header>\n";
     echo $header;
 }
