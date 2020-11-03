@@ -17,6 +17,14 @@ function generateHead(string $page, string $language, string $charset, string $t
     echo $head;
 }
 
+function generateHeader(string $title){
+    $header ="";
+    $header.="<header>\n";
+    $header.="<h1 class=\"text-capitalize text-center\">$title</h1>\n";
+    $header.="</header>\n";
+    echo $header;
+}
+
 function generateSection(int $row, int $column, string $method, string $action, string $titleGraphic, string $titleInteractive, string $case){
     $array = "";
     $array .= "<section class=\"d-flex flex-column align-items-center justify-content-center\">\n";
@@ -59,3 +67,14 @@ function generateSection(int $row, int $column, string $method, string $action, 
     echo $array;
 }
 
+function setValue(int $case, int $player){
+    foreach ($_SESSION["array"] as $key => $value) {
+        if ($key === $case) {
+            if ($player === 1) {
+                $_SESSION["array"][$key] = 1;
+            } else {
+                $_SESSION["array"][$key] = 2;
+            }
+        }
+    }
+}

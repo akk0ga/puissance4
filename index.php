@@ -1,5 +1,6 @@
 <?php
     session_start();
+include("fonctions.php");
     //0 blanc
     //1 rouge
     //2 jaune
@@ -12,13 +13,11 @@
         "60"=>0, "61"=>0, "62"=>0, "63"=>0, "64"=>0, "65"=>0, "66"=>0,
     ];
     $_SESSION["player"] = NULL;
-    include("template/header.html");
+    generateHead("", "fr", "UTF-8", "puissance 4");
+    generateHeader("puissance 4");
 ?>
-    <header>
-        <h1 class="text-capitalize text-center">puissance 4</h1>
-    </header>
     <main class="d-flex align-items-center justify-content-center">
         <a href="game.php?page=game" class="btn btn-primary btn-lg btn-block text-capitalize">play !</a>
     </main>
 <?php
-include("template/footer.html");
+include("template/templateFooter.html");
