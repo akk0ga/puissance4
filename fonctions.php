@@ -14,7 +14,7 @@ function generateHead(string $page, string $language, string $charset, string $t
     $head .= "<title>".$title."</title>";
     $head .= "</head>";
     $head .= "<body class\"d-flex flex-column\">";
-    return $head;
+    echo $head;
 }
 
 function generateSection(int $row, int $column, string $method, string $action, string $titleGraphic, string $titleInteractive, string $case){
@@ -56,6 +56,6 @@ function generateSection(int $row, int $column, string $method, string $action, 
     }
     $array .= "</div>\n";
     $array .= "</section>\n";
-    return $array;
+    echo $array;
 }
 
