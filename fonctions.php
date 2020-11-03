@@ -102,3 +102,144 @@ function displayImage(int $nbr1, int $nbr2){
         }
     }
 }
+
+function calcWin(){
+    foreach ($_SESSION["array"] as $key => $value) {
+        switch ($key) {
+            case 60:
+                for ($i=60; $i < 64; $i++) {
+                    if($_SESSION["array"][$i] === 1 && $_SESSION["array"][$i+1] === 1 && $_SESSION["array"][$i+2] === 1 && $_SESSION["array"][$i+3] === 1) {
+                        echo "Joueur 1 win horizontale";
+                        break;
+                    }elseif ($_SESSION["array"][$i] === 2 && $_SESSION["array"][$i+1] === 2 && $_SESSION["array"][$i+2] === 2 && $_SESSION["array"][$i+3] === 2) {
+                        echo "Joueur 2 win horizontale";
+                        break;
+                    }
+                }
+                for ($i=60; $i < 66; $i++) {
+                    if ($_SESSION["array"][$i] === 1 && $_SESSION["array"][$i-10] === 1 && $_SESSION["array"][$i-20] === 1 && $_SESSION["array"][$i-30] === 1) {
+                        echo "Joueur 1 win verticale";
+                        break;
+                    }elseif ($_SESSION["array"][$i] === 2 && $_SESSION["array"][$i-10] === 2 && $_SESSION["array"][$i-20] === 2 && $_SESSION["array"][$i-30] === 2) {
+                        echo "Joueur 2 win verticale";
+                        break;
+                    }
+                }
+                for ($i=60; $i < 64; $i++) {
+                    if ($_SESSION["array"][$i] === 1 && $_SESSION["array"][$i-10] === 1 && $_SESSION["array"][$i-20] === 1 && $_SESSION["array"][$i-30] === 1) {
+                        echo "Joueur 1 win verticale";
+                        break;
+                    }elseif ($_SESSION["array"][$i] === 2 && $_SESSION["array"][$i-10] === 2 && $_SESSION["array"][$i-20] === 2 && $_SESSION["array"][$i-30] === 2) {
+                        echo "Joueur 2 win verticale";
+                        break;
+                    }
+                }
+                break;
+
+            case 50:
+                for ($i=50; $i < 54; $i++) {
+                    if($_SESSION["array"][$i] === 1 && $_SESSION["array"][$i+1] === 1 && $_SESSION["array"][$i+2] === 1 && $_SESSION["array"][$i+3] === 1) {
+                        echo "Joueur 1 win horizontale";
+                        break;
+                    }elseif ($_SESSION["array"][$i] === 2 && $_SESSION["array"][$i+1] === 2 && $_SESSION["array"][$i+2] === 2 && $_SESSION["array"][$i+3] === 2) {
+                        echo "Joueur 2 win horizontale";
+                        break;
+                    }
+                }
+                for ($i=50; $i < 56; $i++) {
+                    if ($_SESSION["array"][$i] === 1 && $_SESSION["array"][$i-10] === 1 && $_SESSION["array"][$i-20] === 1 && $_SESSION["array"][$i-30] === 1) {
+                        echo "Joueur 1 win verticale";
+                        break;
+                    }elseif ($_SESSION["array"][$i] === 2 && $_SESSION["array"][$i-10] === 2 && $_SESSION["array"][$i-20] === 2 && $_SESSION["array"][$i-30] === 2) {
+                        echo "Joueur 2 win verticale";
+                        break;
+                    }
+                }
+                break;
+
+            case 40:
+                for ($i=40; $i < 44; $i++) {
+                    if($_SESSION["array"][$i] === 1 && $_SESSION["array"][$i+1] === 1 && $_SESSION["array"][$i+2] === 1 && $_SESSION["array"][$i+3] === 1) {
+                        echo "Joueur 1 win horizontale";
+                        break;
+                    }elseif ($_SESSION["array"][$i] === 2 && $_SESSION["array"][$i+1] === 2 && $_SESSION["array"][$i+2] === 2 && $_SESSION["array"][$i+3] === 2) {
+                        echo "Joueur 2 win horizontale";
+                        break;
+                    }
+                }
+                for ($i=40; $i < 46; $i++) {
+                    if ($_SESSION["array"][$i] === 1 && $_SESSION["array"][$i-10] === 1 && $_SESSION["array"][$i-20] === 1 && $_SESSION["array"][$i-30] === 1) {
+                        echo "Joueur 1 win verticale";
+                        break;
+                    }elseif ($_SESSION["array"][$i] === 2 && $_SESSION["array"][$i-10] === 2 && $_SESSION["array"][$i-20] === 2 && $_SESSION["array"][$i-30] === 2) {
+                        echo "Joueur 2 win verticale";
+                        break;
+                    }
+                }
+                break;
+
+            case 30:
+                for ($i=30; $i < 34; $i++) {
+                    if($_SESSION["array"][$i] === 1 && $_SESSION["array"][$i+1] === 1 && $_SESSION["array"][$i+2] === 1 && $_SESSION["array"][$i+3] === 1) {
+                        echo "Joueur 1 win horizontale";
+                        break;
+                    }elseif ($_SESSION["array"][$i] === 2 && $_SESSION["array"][$i+1] === 2 && $_SESSION["array"][$i+2] === 2 && $_SESSION["array"][$i+3] === 2) {
+                        echo "Joueur 2 win horizontale";
+                        break;
+                    }
+                }
+                for ($i=30; $i < 36; $i++) {
+                    if ($_SESSION["array"][$i] === 1 && $_SESSION["array"][$i-10] === 1 && $_SESSION["array"][$i-20] === 1 && $_SESSION["array"][$i-30] === 1) {
+                        echo "Joueur 1 win verticale";
+                        break;
+                    }elseif ($_SESSION["array"][$i] === 2 && $_SESSION["array"][$i-10] === 2 && $_SESSION["array"][$i-20] === 2 && $_SESSION["array"][$i-30] === 2) {
+                        echo "Joueur 2 win verticale";
+                        break;
+                    }
+                }
+                break;
+
+            case 20:
+                for ($i=20; $i < 24; $i++) {
+                    if($_SESSION["array"][$i] === 1 && $_SESSION["array"][$i+1] === 1 && $_SESSION["array"][$i+2] === 1 && $_SESSION["array"][$i+3] === 1) {
+                        echo "Joueur 1 win horizontale";
+                        break;
+                    }elseif ($_SESSION["array"][$i] === 2 && $_SESSION["array"][$i+1] === 2 && $_SESSION["array"][$i+2] === 2 && $_SESSION["array"][$i+3] === 2) {
+                        echo "Joueur 2 win horizontale";
+                        break;
+                    }
+                }
+                for ($i=20; $i < 26; $i++) {
+                    if ($_SESSION["array"][$i] === 1 && $_SESSION["array"][$i-10] === 1 && $_SESSION["array"][$i-20] === 1 && $_SESSION["array"][$i-30] === 1) {
+                        echo "Joueur 1 win verticale";
+                        break;
+                    }elseif ($_SESSION["array"][$i] === 2 && $_SESSION["array"][$i-10] === 2 && $_SESSION["array"][$i-20] === 2 && $_SESSION["array"][$i-30] === 2) {
+                        echo "Joueur 2 win verticale";
+                        break;
+                    }
+                }
+                break;
+
+            case 10:
+                for ($i=10; $i < 14; $i++) {
+                    if($_SESSION["array"][$i] === 1 && $_SESSION["array"][$i+1] === 1 && $_SESSION["array"][$i+2] === 1 && $_SESSION["array"][$i+3] === 1) {
+                        echo "Joueur 1 win horizontale";
+                        break;
+                    }elseif ($_SESSION["array"][$i] === 2 && $_SESSION["array"][$i+1] === 2 && $_SESSION["array"][$i+2] === 2 && $_SESSION["array"][$i+3] === 2) {
+                        echo "Joueur 2 win horizontale";
+                        break;
+                    }
+                }
+                for ($i=10; $i < 16; $i++) {
+                    if ($_SESSION["array"][$i] === 1 && $_SESSION["array"][$i-10] === 1 && $_SESSION["array"][$i-20] === 1 && $_SESSION["array"][$i-30] === 1) {
+                        echo "Joueur 1 win verticale";
+                        break;
+                    }elseif ($_SESSION["array"][$i] === 2 && $_SESSION["array"][$i-10] === 2 && $_SESSION["array"][$i-20] === 2 && $_SESSION["array"][$i-30] === 2) {
+                        echo "Joueur 2 win verticale";
+                        break;
+                    }
+                }
+                break;
+        }
+    }
+}
