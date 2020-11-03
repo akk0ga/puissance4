@@ -28,7 +28,7 @@ function generateSection(int $row, int $column, string $method, string $action, 
     $array .= "<div class=\"array\">\n";
     switch ($case) {
         case 'graphic':
-            for ($i=0; $i < $row ; $i++) { 
+            for ($i=1; $i <= $row ; $i++) { 
                 $array .= "<div class=\"row\">\n";
                 $array .= "<ul class=\"d-flex flex-row justify-content-center align-items-center\">\n";
                 for ($j=0; $j < $column; $j++) { 
@@ -41,11 +41,11 @@ function generateSection(int $row, int $column, string $method, string $action, 
 
         case 'interactive':
             $array .= "<form action=\"$action\" method=\"$method\">\n";
-            for ($i=0; $i < $row ; $i++) {
+            for ($i=1; $i <= $row ; $i++) {
                 $array.= "<div class=\"row\">";
                 $array .= "<ul class=\"d-flex flex-row\">\n";
                 for ($j=0; $j <$column; $j++) {
-                    $array.="<li><input type=\"radio\" name=\"row".$i."-".$j."\" id=\"row".$i."-".$j."\" value=".$j." disabled></li>\n";
+                    $array.="<li><input type=\"checkbox\" value=$i".$j." id=\"row".$i."-".$j."\" name=\"case\"></li>\n";
                 }
                 $array .= "</ul>\n";
                 $array .= "</div>\n";
