@@ -1,5 +1,8 @@
 <?php
 
+/**
+ * genere le head de la page
+ */
 function generateHead(string $page, string $language, string $charset, string $title){
     $head = "";
     $head .= "<!DOCTYPE html>\n";
@@ -17,6 +20,9 @@ function generateHead(string $page, string $language, string $charset, string $t
     echo $head;
 }
 
+/**
+ * genere le header de la page
+ */
 function generateHeader(string $title, int $player = NULL){
     $header ="";
     $header.="<header>\n";
@@ -34,6 +40,11 @@ function generateHeader(string $title, int $player = NULL){
     echo $header;
 }
 
+/**
+ * permet de generer les sections pour le visuel et la partie interactive
+ * visuel -> graphic
+ * interactive -> partie interactive
+ */
 function generateSection(int $row, int $column, string $method, string $action, string $titleGraphic, string $titleInteractive, string $case){
     $array = "";
     $array .= "<section class=\"d-flex flex-column align-items-center justify-content-center\">\n";
@@ -76,6 +87,10 @@ function generateSection(int $row, int $column, string $method, string $action, 
     echo $array;
 }
 
+/**
+ * set la valeur en fonction du joueur et du choix de la case
+ * dans l'array
+ */
 function setArrayValue(int $case, int $player){
     foreach ($_SESSION["array"] as $key => $value) {
         if ($key === $case) {
@@ -88,6 +103,10 @@ function setArrayValue(int $case, int $player){
     }
 }
 
+/**
+ * permet de choisir l'image 
+ * en fonction de la valeur dans le tableau
+ */
 function displayImage(int $nbr1, int $nbr2){
     $nbrFinal = intval($nbr1."".$nbr2);
     foreach ($_SESSION["array"] as $key => $value) {
@@ -103,6 +122,9 @@ function displayImage(int $nbr1, int $nbr2){
     }
 }
 
+/**
+ * permet de verifier les conditions de victoire
+ */
 function calcWin(){
     foreach ($_SESSION["array"] as $key => $value) {
         /**
