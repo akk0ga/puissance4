@@ -76,7 +76,7 @@ function generateSection(int $row, int $column, string $method, string $action, 
             break;
 
         case 'interactive':
-            $array .= "<form action=\"$action\" method=\"$method\">\n";
+            $array .= "<form action=\"$action\" method=\"$method\" class=\"d-flex flex-column align-items-center\">\n";
             for ($i=1; $i <= $row ; $i++) {
                 $array.= "<div class=\"row $i\">";
                 $array .= "<ul class=\"d-flex flex-row\">\n";
