@@ -81,7 +81,7 @@ function generateSection(int $row, int $column, string $method, string $action, 
                 $array.= "<div class=\"row $i\">";
                 $array .= "<ul class=\"d-flex flex-row\">\n";
                 for ($j=0; $j <$column; $j++) {
-                    $array.="<li><input type=\"checkbox\" value=$i".$j." id=\"row".$i."-".$j."\" name=\"case\" ".disabled()." ></li>\n";
+                    $array.="<li><input type=\"checkbox\" value=$i".$j." id=\"row".$i."-".$j."\" name=\"case\" ".disabled($i,$j)."></li>\n";
                 }
                 $array .= "</ul>\n";
                 $array .= "</div>\n";
@@ -98,16 +98,23 @@ function generateSection(int $row, int $column, string $method, string $action, 
 /**
  * permet de rendre l'input disable ou non
  */
-function disabled(){
-    foreach ($_SESSION["array"] as $key => $value) {
+function disabled(int $nbr1, int $nbr2){
+    $nbrFinal = intval($nbr1."".$nbr2);
         /**
          * si cest egale de 60 a 66 alors on disabled pas
          * sinon rien ne peut etre selectionner
          */
-        if ($value === 0) {
+        if ($nbrFinal < 60 && $_SESSION["array"][$nbrFinal]<3) {
             return "disabled";
         }
-    }
+        /**
+         * si la case est remplie on disabled 
+         * la case au dessus n'est plu disabled
+         */
+        if ($_SESSION["array"][$nbrFinal]!=0 && $_SESSION["array"][$nbrFinal]<3) {
+            $_SESSION["array"][$nbrFinal-10] = 3;
+            return "disabled ";
+        }
 }
 
 /**
