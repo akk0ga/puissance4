@@ -53,7 +53,7 @@ function generateHeader(string $title, int $player, bool $checkWin){
  * visuel -> graphic
  * interactive -> partie interactive
  */
-function generateSection(int $row, int $column, string $method, string $action, string $titleGraphic, string $titleInteractive, string $case){
+function generateSection(int $row, int $column, string $method, string $action, string $titleGraphic, string $titleInteractive, string $case, bool $turn){
     $array = "";
     $array .= "<section class=\"d-flex flex-column align-items-center justify-content-center\">\n";
     if (empty($titleGraphic)) {
@@ -81,7 +81,7 @@ function generateSection(int $row, int $column, string $method, string $action, 
                 $array.= "<div class=\"row $i\">";
                 $array .= "<ul class=\"d-flex flex-row\">\n";
                 for ($j=0; $j <$column; $j++) {
-                    $array.="<li><input type=\"checkbox\" value=$i".$j." id=\"row".$i."-".$j."\" name=\"case\" ".disabled($i,$j)."></li>\n";
+                    $array.="<li><input type=\"checkbox\" value=$i".$j." id=\"row".$i."-".$j."\" name=\"case\" ".disabled($i, $j, $turn)."></li>\n";
                 }
                 $array .= "</ul>\n";
                 $array .= "</div>\n";
@@ -98,23 +98,33 @@ function generateSection(int $row, int $column, string $method, string $action, 
 /**
  * permet de rendre l'input disable ou non
  */
-function disabled(int $nbr1, int $nbr2){
+function disabled(int $nbr1, int $nbr2, bool $firsTurn){
     $nbrFinal = intval($nbr1."".$nbr2);
-        /**
-         * si cest egale de 60 a 66 alors on disabled pas
-         * sinon rien ne peut etre selectionner
-         */
-        if ($nbrFinal < 60 && $_SESSION["array"][$nbrFinal]<3) {
-            return "disabled";
-        }
-        /**
-         * si la case est remplie on disabled 
-         * la case au dessus n'est plu disabled
-         */
-        if ($_SESSION["array"][$nbrFinal]!=0 && $_SESSION["array"][$nbrFinal]<3) {
-            $_SESSION["array"][$nbrFinal-10] = 3;
-            return "disabled ";
-        }
+    /**
+     * initialise les cases suivant si cest le premier tour ou non
+     * si cest le premier turn est = a true
+     */
+    switch ($firsTurn) {
+        case true:
+            /**
+             * si cest egale de 60 a 66 alors on disabled pas
+             * sinon si la case est superieur a 60 mais qu'elle est remplie on disabled
+             */
+            if ($nbrFinal < 60) {
+                return "disabled";
+            }
+            break;
+
+        default:
+                if ($nbrFinal >= 60 && $_SESSION["array"][$nbrFinal] > 0) {
+                    return "disabled";
+                }elseif ($nbrFinal < 60 && $_SESSION["array"][$nbrFinal+10] === 0) {
+                    return "disabled";
+                }elseif ($nbrFinal < 60 && $_SESSION["array"][$nbrFinal] > 0) {
+                    return "disabled";
+                }
+            break;
+    }
 }
 
 /**

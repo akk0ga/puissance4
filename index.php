@@ -13,6 +13,8 @@ include("fonctions.php");
         "60"=>0, "61"=>0, "62"=>0, "63"=>0, "64"=>0, "65"=>0, "66"=>0,
     ];
     $_SESSION["player"] = 1;
+    $_SESSION["firstTurn"] = true;
+
     generateHead("", "fr", "UTF-8", "puissance 4");
     generateHeader("puissance 4",0,false);
 ?>
