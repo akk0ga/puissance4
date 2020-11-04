@@ -23,16 +23,24 @@ function generateHead(string $page, string $language, string $charset, string $t
 /**
  * genere le header de la page
  */
-function generateHeader(string $title, int $player = NULL){
+function generateHeader(string $title, int $player, bool $checkWin){
     $header ="";
     $header.="<header>\n";
     $header.="<h1 class=\"text-capitalize text-center\">$title</h1>\n";
-    if (!empty($player)) {
+    if (!empty($player) && $checkWin === false){
         $header.="<h2 class=\"text-center text-secondary\"> A vous de jouer : ";
         if ($player === 1) {
             $header.="Joueur 1";
         }else {
             $header.="Joueur 2";
+        }
+        $header.="</h2>\n";
+    }elseif($checkWin === true && calcWin() === 2 || calcWin() === 1) {
+        $header.="<h2 class=\"text-center text-success\">";
+        if (calcWin() === 1) {
+            $header.="Joueur 1 win";
+        }else{
+            $header.="Joueur 2 win";
         }
         $header.="</h2>\n";
     }
@@ -133,10 +141,10 @@ function calcWin(){
         if ($key === 60 || $key === 50 || $key === 40 || $key === 30 ||$key === 20 || $key === 10) {
             for ($i=$key; $i < $key+4; $i++) {
                 if($_SESSION["array"][$i] === 1 && $_SESSION["array"][$i+1] === 1 && $_SESSION["array"][$i+2] === 1 && $_SESSION["array"][$i+3] === 1) {
-                    echo "Joueur 1 win horizontal";
+                    return 1;
                     break;
                 }elseif ($_SESSION["array"][$i] === 2 && $_SESSION["array"][$i+1] === 2 && $_SESSION["array"][$i+2] === 2 && $_SESSION["array"][$i+3] === 2) {
-                    echo "Joueur 2 win horizontal";
+                    return 2;
                     break;
                  }
             }
@@ -149,20 +157,20 @@ function calcWin(){
                 //la diagonal
                 for ($i=$key; $i < $key+4; $i++) {
                     if ($_SESSION["array"][$i] === 1 && $_SESSION["array"][($i-10)+1] === 1 && $_SESSION["array"][($i-20)+2] === 1 && $_SESSION["array"][($i-30)+3] === 1) {
-                         echo "Joueur 1 win diagonal";
+                        return 1;
                          break;
                      }elseif ($_SESSION["array"][$i] === 2 && $_SESSION["array"][($i-10)+1] === 2 && $_SESSION["array"][($i-20)+2] === 2 && $_SESSION["array"][($i-30)+3] === 2) {
-                         echo "Joueur 1 win diagonal";
+                         return 2;
                          break;
                      }
                 }
                 //la vertical
                 for ($i=$key; $i < $key+6; $i++) {
                     if ($_SESSION["array"][$i] === 1 && $_SESSION["array"][$i-10] === 1 && $_SESSION["array"][$i-20] === 1 && $_SESSION["array"][$i-30] === 1) {
-                        echo "Joueur 1 win vertical";
+                        return 1;
                         break;
                     }elseif ($_SESSION["array"][$i] === 2 && $_SESSION["array"][$i-10] === 2 && $_SESSION["array"][$i-20] === 2 && $_SESSION["array"][$i-30] === 2) {
-                        echo "Joueur 2 win vertical";
+                        return 2;
                         break;
                     }
                 }

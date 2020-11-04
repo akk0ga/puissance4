@@ -14,7 +14,7 @@ include("fonctions.php");
     ];
     $_SESSION["player"] = 1;
     generateHead("", "fr", "UTF-8", "puissance 4");
-    generateHeader("puissance 4");
+    generateHeader("puissance 4",0,false);
 ?>
     <main class="d-flex align-items-center justify-content-center">
         <a href="game.php?page=game" class="btn btn-primary btn-lg btn-block text-capitalize">play !</a>
