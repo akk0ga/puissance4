@@ -9,8 +9,6 @@ if(isset($_POST["submit"]) && isset($_POST["case"])){
 }
 generateHead(strval($_GET["page"]), "fr", "UTF-8", "puissance4");
 generateHeader("puissance 4", $_SESSION["player"], true);
-
-
 ?>
 <main>
     <?php

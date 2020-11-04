@@ -78,10 +78,10 @@ function generateSection(int $row, int $column, string $method, string $action, 
         case 'interactive':
             $array .= "<form action=\"$action\" method=\"$method\">\n";
             for ($i=1; $i <= $row ; $i++) {
-                $array.= "<div class=\"row\">";
+                $array.= "<div class=\"row $i\">";
                 $array .= "<ul class=\"d-flex flex-row\">\n";
                 for ($j=0; $j <$column; $j++) {
-                    $array.="<li><input type=\"checkbox\" value=$i".$j." id=\"row".$i."-".$j."\" name=\"case\"></li>\n";
+                    $array.="<li><input type=\"checkbox\" value=$i".$j." id=\"row".$i."-".$j."\" name=\"case\" ".disabled()." ></li>\n";
                 }
                 $array .= "</ul>\n";
                 $array .= "</div>\n";
@@ -93,6 +93,21 @@ function generateSection(int $row, int $column, string $method, string $action, 
     $array .= "</div>\n";
     $array .= "</section>\n";
     echo $array;
+}
+
+/**
+ * permet de rendre l'input disable ou non
+ */
+function disabled(){
+    foreach ($_SESSION["array"] as $key => $value) {
+        /**
+         * si cest egale de 60 a 66 alors on disabled pas
+         * sinon rien ne peut etre selectionner
+         */
+        if ($value === 0) {
+            return "disabled";
+        }
+    }
 }
 
 /**
