@@ -64,12 +64,7 @@ function generateSection(int $row, int $column, string $method, string $action, 
             (!empty($win))?$disable = "disabled":$disable = disabled($i, $j, $turn);
             $circle = "<li><img src=\"".displayImage($i, $j)."\" alt=\"cireturn\"></li>\n";
             $checkbox = "<li><input type=\"checkbox\" value=$i".$j." id=\"row".$i."-".$j."\" name=\"case\" ".$disable."></li>\n";
-            if ($_SESSION["array"][intval($i."".$j)] === 0) {
-                $array.=$checkbox;
-            }else {
-                $array.=$circle;
-            }
-            // $array.="<li><input type=\"checkbox\" value=$i".$j." id=\"row".$i."-".$j."\" name=\"case\" ".$disable."></li>\n";
+            ($_SESSION["array"][intval($i."".$j)] === 0)?$array.=$checkbox:$array.=$circle;
         }
         $array .= "</ul>\n";
         $array .= "</div>\n";
