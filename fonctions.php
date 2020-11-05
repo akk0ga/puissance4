@@ -53,7 +53,7 @@ function generateHeader(string $title, int $player, bool $checkWin){
  * visuel -> graphic
  * interactive -> partie interactive
  */
-function generateSection(int $row, int $column, string $method, string $action, string $titleGraphic, string $titleInteractive, string $case, bool $turn){
+function generateSection(int $row, int $column, string $method, string $action, string $titleGraphic, string $titleInteractive, string $case, bool $turn, bool $win){
     $array = "";
     $array .= "<section class=\"d-flex flex-column align-items-center justify-content-center\">\n";
     if (empty($titleGraphic)) {
@@ -81,7 +81,12 @@ function generateSection(int $row, int $column, string $method, string $action, 
                 $array.= "<div class=\"row $i\">";
                 $array .= "<ul class=\"d-flex flex-row\">\n";
                 for ($j=0; $j <$column; $j++) {
-                    $array.="<li><input type=\"checkbox\" value=$i".$j." id=\"row".$i."-".$j."\" name=\"case\" ".disabled($i, $j, $turn)."></li>\n";
+                    if (!empty($win)) {
+                        $disable = "disabled";
+                    }else{
+                        $disable = disabled($i, $j, $turn);
+                    }
+                    $array.="<li><input type=\"checkbox\" value=$i".$j." id=\"row".$i."-".$j."\" name=\"case\" ".$disable."></li>\n";
                 }
                 $array .= "</ul>\n";
                 $array .= "</div>\n";
