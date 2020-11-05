@@ -51,10 +51,9 @@ function generateHeader(string $title, int $player, bool $checkWin){
 /**
  * permet de generer la section de jeu
  */
-function generateSection(int $row, int $column, string $method, string $action, string $title, bool $turn, bool $win){
+function generateSection(int $row, int $column, string $method, string $action, bool $turn, bool $win){
     $array = "";
     $array .= "<section class=\"d-flex flex-column align-items-center justify-content-center\">\n";
-    $array .= "<h2 class=\"text-center text-secondary\">$title</h2>";
     $array .= "<div class=\"array\">\n";
     $array .= "<form action=\"$action\" method=\"$method\" class=\"d-flex flex-column align-items-center\">\n";
     for ($i=1; $i <= $row ; $i++) {
@@ -62,8 +61,10 @@ function generateSection(int $row, int $column, string $method, string $action, 
         $array .= "<ul class=\"d-flex flex-row\">\n";
         for ($j=0; $j <$column; $j++) {
             (!empty($win))?$disable = "disabled":$disable = disabled($i, $j, $turn);
+            //creer l'image et la chekcbox
             $circle = "<li><img src=\"".displayImage($i, $j)."\" alt=\"cireturn\"></li>\n";
             $checkbox = "<li><input type=\"checkbox\" value=$i".$j." id=\"row".$i."-".$j."\" name=\"case\" ".$disable."></li>\n";
+            //afficher l'image ou la checkbox si la valeur dans le tableau est egale a 0
             ($_SESSION["array"][intval($i."".$j)] === 0)?$array.=$checkbox:$array.=$circle;
         }
         $array .= "</ul>\n";

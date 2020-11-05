@@ -17,7 +17,7 @@ generateHeader("puissance 4", $_SESSION["player"], $checkWin);
 ?>
 <main>
     <?php
-        generateSection(6, 7, "post", "#", "interactive", $_SESSION["firstTurn"], $checkWin);
+        generateSection(6, 7, "post", "#", $_SESSION["firstTurn"], $checkWin);
     ?>
 </main>
 <?php
