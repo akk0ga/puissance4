@@ -49,52 +49,33 @@ function generateHeader(string $title, int $player, bool $checkWin){
 }
 
 /**
- * permet de generer les sections pour le visuel et la partie interactive
- * visuel -> graphic
- * interactive -> partie interactive
+ * permet de generer la section de jeu
  */
-function generateSection(int $row, int $column, string $method, string $action, string $titleGraphic, string $titleInteractive, string $case, bool $turn, bool $win){
+function generateSection(int $row, int $column, string $method, string $action, string $title, bool $turn, bool $win){
     $array = "";
     $array .= "<section class=\"d-flex flex-column align-items-center justify-content-center\">\n";
-    if (empty($titleGraphic)) {
-        $array .= "<h2 class=\"text-center text-secondary\">$titleInteractive</h2>";
-    } else {
-        $array .= "<h2 class=\"text-center text-secondary\">$titleGraphic</h2>";
-    }
+    $array .= "<h2 class=\"text-center text-secondary\">$title</h2>";
     $array .= "<div class=\"array\">\n";
-    switch ($case) {
-        case 'graphic':
-            for ($i=1; $i <= $row ; $i++) { 
-                $array .= "<div class=\"row\">\n";
-                $array .= "<ul class=\"d-flex flex-row justify-content-center align-items-center\">\n";
-                for ($j=0; $j < $column; $j++) {
-                    $array .= "<li><img src=\"".displayImage($i, $j)."\" alt=\"cireturn\"></li>\n";
-                }
-                $array .= "</ul>\n";
-                $array .= "</div>\n";
+    $array .= "<form action=\"$action\" method=\"$method\" class=\"d-flex flex-column align-items-center\">\n";
+    for ($i=1; $i <= $row ; $i++) {
+        $array.= "<div class=\"row $i\">";
+        $array .= "<ul class=\"d-flex flex-row\">\n";
+        for ($j=0; $j <$column; $j++) {
+            (!empty($win))?$disable = "disabled":$disable = disabled($i, $j, $turn);
+            $circle = "<li><img src=\"".displayImage($i, $j)."\" alt=\"cireturn\"></li>\n";
+            $checkbox = "<li><input type=\"checkbox\" value=$i".$j." id=\"row".$i."-".$j."\" name=\"case\" ".$disable."></li>\n";
+            if ($_SESSION["array"][intval($i."".$j)] === 0) {
+                $array.=$checkbox;
+            }else {
+                $array.=$circle;
             }
-            break;
-
-        case 'interactive':
-            $array .= "<form action=\"$action\" method=\"$method\" class=\"d-flex flex-column align-items-center\">\n";
-            for ($i=1; $i <= $row ; $i++) {
-                $array.= "<div class=\"row $i\">";
-                $array .= "<ul class=\"d-flex flex-row\">\n";
-                for ($j=0; $j <$column; $j++) {
-                    if (!empty($win)) {
-                        $disable = "disabled";
-                    }else{
-                        $disable = disabled($i, $j, $turn);
-                    }
-                    $array.="<li><input type=\"checkbox\" value=$i".$j." id=\"row".$i."-".$j."\" name=\"case\" ".$disable."></li>\n";
-                }
-                $array .= "</ul>\n";
-                $array .= "</div>\n";
-            }
-            $array .= "<input type=\"submit\" value=\"submit\" name=\"submit\" class=\"btn btn-primary\">\n";
-            $array .= "</form>\n";
-            break;
+            // $array.="<li><input type=\"checkbox\" value=$i".$j." id=\"row".$i."-".$j."\" name=\"case\" ".$disable."></li>\n";
+        }
+        $array .= "</ul>\n";
+        $array .= "</div>\n";
     }
+    $array .= "<input type=\"submit\" value=\"submit\" name=\"submit\" class=\"btn btn-primary\">\n";
+    $array .= "</form>\n";
     $array .= "</div>\n";
     $array .= "</section>\n";
     echo $array;
@@ -192,7 +173,7 @@ function calcWin(){
              */
             if ($key === 60 || $key === 50 || $key === 40) {
                 //la diagonal
-                for ($i=$key; $i < $key+4; $i++) {
+                for ($i=$key; $i <= $key+4; $i++) {
                     if ($_SESSION["array"][$i] === 1 && $_SESSION["array"][($i-10)+1] === 1 && $_SESSION["array"][($i-20)+2] === 1 && $_SESSION["array"][($i-30)+3] === 1) {
                         return 1;
                          break;
