@@ -17,20 +17,20 @@ body main {
       display: block;
       width: 80%;
       height: 60vh; }
-      body main section .array .row {
+      body main section .array {
         width: max-content;
         height: max-content;
         margin-left: 9%; }
-        body main section .array .row ul {
+        body main section .array ul {
           position: relative;
           width: 100%;
           margin: 0; }
-          body main section .array .row ul li {
+          body main section .array ul li {
             list-style: none; }
-            body main section .array .row ul li img {
+            body main section .array ul li img {
               width: 80px;
               height: 80px; }
-            body main section .array .row ul li input {
+            body main section .array ul li input {
               width: 80px;
               height: 80px; }
 

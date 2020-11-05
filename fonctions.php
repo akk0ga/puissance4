@@ -56,19 +56,20 @@ function generateSection(int $row, int $column, string $method, string $action, 
     $array .= "<section class=\"d-flex flex-column align-items-center justify-content-center\">\n";
     $array .= "<div class=\"array\">\n";
     $array .= "<form action=\"$action\" method=\"$method\" class=\"d-flex flex-column align-items-center\">\n";
+    //creer les listes
     for ($i=1; $i <= $row ; $i++) {
-        $array.= "<div class=\"row $i\">";
         $array .= "<ul class=\"d-flex flex-row\">\n";
+        // créer les li
         for ($j=0; $j <$column; $j++) {
+            //verifier si il y a une victoire ou non pour savoir si il faut tout disabled
             (!empty($win))?$disable = "disabled":$disable = disabled($i, $j, $turn);
-            //creer l'image et la chekcbox
+            //creer l'image et la checkbox
             $circle = "<li><img src=\"".displayImage($i, $j)."\" alt=\"cireturn\"></li>\n";
             $checkbox = "<li><input type=\"checkbox\" value=$i".$j." id=\"row".$i."-".$j."\" name=\"case\" ".$disable."></li>\n";
             //afficher l'image ou la checkbox si la valeur dans le tableau est egale a 0
             ($_SESSION["array"][intval($i."".$j)] === 0)?$array.=$checkbox:$array.=$circle;
         }
         $array .= "</ul>\n";
-        $array .= "</div>\n";
     }
     $array .= "<input type=\"submit\" value=\"submit\" name=\"submit\" class=\"btn btn-primary\">\n";
     $array .= "</form>\n";
