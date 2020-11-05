@@ -66,7 +66,7 @@ function generateSection(int $row, int $column, string $method, string $action, 
             //creer l'image et la checkbox
             $circle = "<li><img src=\"".displayImage($i, $j)."\" alt=\"cireturn\"></li>\n";
             $checkbox = "<li><input type=\"checkbox\" value=$i".$j." id=\"row".$i."-".$j."\" name=\"case\" ".$disable."></li>\n";
-            //afficher l'image ou la checkbox si la valeur dans le tableau est egale a 0
+            //afficher la checkbox ou l'image si la valeur dans le tableau est egale a 0 ou non
             ($_SESSION["array"][intval($i."".$j)] === 0)?$array.=$checkbox:$array.=$circle;
         }
         $array .= "</ul>\n";
