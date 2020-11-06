@@ -135,11 +135,11 @@ function displayImage(int $nbr1, int $nbr2){
     foreach ($_SESSION["array"] as $key => $value) {
         if($key === $nbrFinal){
             if ($value === 1) {
-                return "assets/img/circle_red-01.svg";
+                echo "assets/img/circle_red-01.svg";
             }elseif ($value === 2){
-                return "assets/img/circle_yellow-01.svg";
+                echo "assets/img/circle_yellow-01.svg";
             }else{
-                return "assets/img/circle_white-01.svg";
+                echo "assets/img/circle_white-01.svg";
             }
         }
     }
