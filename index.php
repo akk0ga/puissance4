@@ -1,9 +1,6 @@
 <?php
     session_start();
-include("fonctions.php");
-    //0 blanc
-    //1 rouge
-    //2 jaune
+    //permet de savori qui a tel ou tel case
     $_SESSION["array"] = [
         "10"=>0, "11"=>0, "12"=>0, "13"=>0, "14"=>0, "15"=>0, "16"=>0,
         "20"=>0, "21"=>0, "22"=>0, "23"=>0, "24"=>0, "25"=>0, "26"=>0,
@@ -12,14 +9,12 @@ include("fonctions.php");
         "50"=>0, "51"=>0, "52"=>0, "53"=>0, "54"=>0, "55"=>0, "56"=>0,
         "60"=>0, "61"=>0, "62"=>0, "63"=>0, "64"=>0, "65"=>0, "66"=>0,
     ];
+
+    //savoir quel joueur joue
     $_SESSION["player"] = 1;
+
+    //savoir si cest le premier tour ou non
     $_SESSION["firstTurn"] = true;
 
-    generateHead("", "fr", "UTF-8", "puissance 4");
-    generateHeader("puissance 4",0,false);
+include_once("template/templateIndex.php");
 ?>
-    <main class="d-flex align-items-center justify-content-center">
-        <a href="game.php?page=game" class="btn btn-primary btn-lg btn-block text-capitalize">play !</a>
-    </main>
-<?php
-include("template/templateFooter.html");
