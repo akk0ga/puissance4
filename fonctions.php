@@ -170,7 +170,7 @@ function calcWin(){
              */
             if ($key === 60 || $key === 50 || $key === 40) {
                 //la diagonal
-                for ($i=$key; $i < $key+6; $i++) {
+                for ($i=$key; $i <= $key+3; $i++) {
                     if ($_SESSION["array"][$i] === 1 && $_SESSION["array"][($i-10)+1] === 1 && $_SESSION["array"][($i-20)+2] === 1 && $_SESSION["array"][($i-30)+3] === 1) {
                         return 1;
                          break;
@@ -180,7 +180,7 @@ function calcWin(){
                      }
                 }
                 //la vertical
-                for ($i=$key; $i < $key+7; $i++) {
+                for ($i=$key; $i < $key+6; $i++) {
                     if ($_SESSION["array"][$i] === 1 && $_SESSION["array"][$i-10] === 1 && $_SESSION["array"][$i-20] === 1 && $_SESSION["array"][$i-30] === 1) {
                         return 1;
                         break;
