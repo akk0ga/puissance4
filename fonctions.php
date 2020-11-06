@@ -179,6 +179,15 @@ function calcWin(){
                          break;
                      }
                 }
+                for ($i=$key+3; $i <= $key+6; $i++) {
+                    if ($_SESSION["array"][$i] === 1 && $_SESSION["array"][($i-11)] === 1 && $_SESSION["array"][($i-22)] === 1 && $_SESSION["array"][($i-33)] === 1) {
+                        return 1;
+                         break;
+                     }elseif ($_SESSION["array"][$i] === 2 && $_SESSION["array"][($i-11)] === 2 && $_SESSION["array"][($i-22)] === 2 && $_SESSION["array"][($i-33)] === 2) {
+                         return 2;
+                         break;
+                     }
+                }
                 //la vertical
                 for ($i=$key; $i < $key+6; $i++) {
                     if ($_SESSION["array"][$i] === 1 && $_SESSION["array"][$i-10] === 1 && $_SESSION["array"][$i-20] === 1 && $_SESSION["array"][$i-30] === 1) {
