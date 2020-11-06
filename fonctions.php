@@ -65,7 +65,7 @@ function generateSection(int $row, int $column, string $method, string $action, 
             (!empty($win))?$disable = "disabled":$disable = disabled($i, $j, $turn);
             //creer l'image et la checkbox
             $circle = "<li><img src=\"".displayImage($i, $j)."\" alt=\"cireturn\"></li>\n";
-            $checkbox = "<li><input type=\"checkbox\" value=$i".$j." class=\"row".$i."\" name=\"case\" ".$disable."></li>\n";
+            $checkbox = "<li><input type=\"radio\" value=$i".$j." class=\"row".$i."\" name=\"case\" ".$disable."></li>\n";
             //afficher la checkbox ou l'image si la valeur dans le tableau est egale a 0 ou non
             ($_SESSION["array"][intval($i."".$j)] === 0)?$array.=$checkbox:$array.=$circle;
         }
